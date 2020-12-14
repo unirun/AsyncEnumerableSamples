@@ -8,7 +8,7 @@ namespace AsyncEnumerableSamples
     {
         public async Task DoAsync()
         {
-            await foreach (var item in ReadAllLinesAsync())
+            await foreach (var item in ReadAllLinesAsync().Select(item => item.Replace("read", "replace")).Where(item => item.Contains('e')))
                 Console.WriteLine(item);
         }
 
